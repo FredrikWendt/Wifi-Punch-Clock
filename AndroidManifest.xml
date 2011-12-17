@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="se.wendt.android.wifipclock"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+
+    <!-- WLAN scan -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!-- scheduling -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:label="@string/app_name"
+            android:name="se.wendt.android.wifipclock.MainActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- fixme: add android:icon -->
+        <!-- fixme: android:process=":Scheduler" -->
+        <receiver
+            android:label="Wifi Punch Clock Schedules Scan After Device Boot"
+            android:name="se.wendt.android.scheduling.OnBootReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="se.wendt.android.scheduling.OnAlarmReceiver" android:label="Wifi Punch Clock Scan Scheduler"/>
+    	<service android:name="se.wendt.android.wifipclock.ScanWifiService" android:exported="false" android:label="Wifi Punch Clock Scan Service"/>
+    </application>
+
+</manifest>

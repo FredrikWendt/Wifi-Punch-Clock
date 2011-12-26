@@ -140,4 +140,11 @@ public class SsidLog extends SQLiteOpenHelper {
 		throw new UnsupportedOperationException("This application uses only one database format");
 	}
 
+	public Cursor getNetworks() {
+		// FIXME: use aggregate to calculate sum of billable hours?
+		Cursor cursor = getReadableDatabase().rawQuery("SELECT DISTINCT wlan, _id FROM " + TABLE_RECORDS + " ORDER BY wlan ASC", null);
+		logger.debug("found %s ssids", cursor.getCount());
+		return cursor;
+	}
+
 }

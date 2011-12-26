@@ -14,7 +14,7 @@ import android.content.Intent;
 public class Scheduler {
 	
 	private static final Logger logger = Logger.getLogger(Scheduler.class);
-	static final int _15_MINUTES = 15 * 60 * 1000;
+	private static final int _15_MINUTES = 15 * 60 * 1000 / 15; // FIXME before release :)
 
 	public void scheduleNextScan(Context context) {
 		AlarmManager alarmManager = getAlarmManager(context);
@@ -39,8 +39,8 @@ public class Scheduler {
 	}
 
 	protected PendingIntent createPendingIntent(Context context) {
-		Intent i = new Intent(context, OnAlarmReceiver.class);
-		PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
+		Intent intent = new Intent(context, OnAlarmReceiver.class);
+		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 		return pi;
 	}
 

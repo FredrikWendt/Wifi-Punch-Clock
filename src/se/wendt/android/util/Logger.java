@@ -32,19 +32,19 @@ public class Logger {
 	}
 
 	public void info(String message, Object... args) {
-		Log.i(tag, String.format(message, args));
+		Log.i(tag, format(message, args));
 	}
 
 	public void debug(String message, Object... args) {
-		Log.d(tag, String.format(message, args));
+		Log.d(tag, format(message, args));
 	}
 
 	public void error(Throwable e, String messageFormat, Object... args) {
-		Log.e(tag, String.format(messageFormat, args), e);
+		Log.e(tag, format(messageFormat, args), e);
 	}
 
 	public void error(String message, Object... args) {
-		Log.e(tag, String.format(message, args));
+		Log.e(tag, format(message, args));
 	}
 
 	public static Logger getLogger(Class<?> klass) {
@@ -52,7 +52,25 @@ public class Logger {
 	}
 
 	public void warn(String messageFormat, Object... args) {
-		Log.w(tag, String.format(messageFormat, args));
+		Log.w(tag, format(messageFormat, args));
+	}
+
+	private String format(String format, Object... args) {
+		if (args == null) {
+			args = new String[] { "null" };
+		}
+		for (int j = 0; j < args.length; j++) {
+			if (args[j] == null) {
+				args[j] = "null";
+			}
+		}
+
+		// other exceptions can occur
+		try {
+			return String.format(format, args);
+		} catch (Exception e) {
+			return format + args;
+		}
 	}
 
 }

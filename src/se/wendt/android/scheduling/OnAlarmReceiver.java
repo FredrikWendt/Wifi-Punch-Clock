@@ -20,9 +20,10 @@ package se.wendt.android.scheduling;
 
 
 import se.wendt.android.util.Logger;
-import se.wendt.android.wifipclock.ScanWifiService;
 import se.wendt.android.wifipclock.Scheduler;
+import se.wendt.android.wifipclock.services.WifiScanService;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
@@ -40,7 +41,11 @@ public class OnAlarmReceiver extends BroadcastReceiver {
 		logger.debug("woke up from alarm");
 		
 		scheduler.scheduleNextScan(context);
-		WakefulIntentService.acquireStaticLock(context);
-		context.startService(new Intent(context, ScanWifiService.class));
+		ComponentName componentName = context.startService(new Intent(context, WifiScanService.class));
+		if (componentName == null) {
+			logger.warn("Failed to start wifi scan service");
+		} else {
+			logger.debug("Started wifi scan service: %s", componentName);
+		}
 	}
 }

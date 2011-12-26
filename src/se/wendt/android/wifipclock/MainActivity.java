@@ -2,6 +2,7 @@ package se.wendt.android.wifipclock;
 
 import static java.util.Arrays.asList;
 import se.wendt.android.util.Logger;
+import se.wendt.android.wifipclock.services.WifiScanService;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;

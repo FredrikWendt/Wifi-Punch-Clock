@@ -28,11 +28,16 @@
         </activity>
         <activity
             android:label="Network Summary"
-            android:name="se.wendt.android.wifipclock.NetworkSummaryActivity" >
+            android:name="se.wendt.android.wifipclock.NetworkSummaryActivity"
+            android:exported="false"
+            >
         </activity>
         <activity
             android:label="Network Details"
-            android:name="se.wendt.android.wifipclock.NetworkDetailsActivity" >
+            android:name="se.wendt.android.wifipclock.NetworkDetailsActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            >
         </activity>
             
         <!-- fixme: add android:icon -->

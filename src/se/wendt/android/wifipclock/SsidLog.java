@@ -220,4 +220,8 @@ public class SsidLog extends SQLiteOpenHelper {
 		return cursor;
 	}
 
+	public String getNoteForDate(Date dateFromIntent) {
+		return "This is a fake note.\nBut it could've been very real actually, if I'd been really bored and didn't have anything better to do ...";
+	}
+
 }

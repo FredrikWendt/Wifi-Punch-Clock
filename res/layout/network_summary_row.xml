@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
@@ -8,6 +9,7 @@
         android:layout_width="0sp"
         android:layout_height="32sp"
         android:layout_weight="0.2"
+        android:gravity="right"
         android:padding="6sp" />
 
     <TextView
@@ -22,6 +24,7 @@
         android:layout_width="0sp"
         android:layout_height="32sp"
         android:layout_weight="0.2"
+        android:gravity="right"
         android:padding="6sp" />
 
     <TextView
@@ -36,6 +39,7 @@
         android:layout_width="0sp"
         android:layout_height="32sp"
         android:layout_weight="0.2"
+        android:gravity="center"
         android:padding="6sp" />
 
 </LinearLayout>

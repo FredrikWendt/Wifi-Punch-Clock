@@ -3,5 +3,10 @@
 
     <string name="app_name">Wifi Network Based Punch Clock</string>
     <string name="list_view_title">Recorded Wifi Network Presence</string>
-
+    <string name="day_button_previous">Previous Day</string>
+    <string name="day_button_next">Next Day</string>
+    <string name="network_list_title">Welcome to Wifi Network Punch Clock</string>
+    <string name="network_list_intro">These are the Wifi networks we\'re monitoring.</string>
+    <string name="network_details_note_label">Note</string>
+        
 </resources>

@@ -14,7 +14,7 @@ import android.content.Intent;
 public class Scheduler {
 	
 	private static final Logger logger = Logger.getLogger(Scheduler.class);
-	private static final int _15_MINUTES = 15 * 60 * 1000 / 15; // FIXME before release :)
+	private static final int _15_MINUTES = 15 * 60 * 1000;
 
 	public void scheduleNextScan(Context context) {
 		AlarmManager alarmManager = getAlarmManager(context);

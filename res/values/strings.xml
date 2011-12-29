@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MainActivity!</string>
-    <string name="app_name">WLAN Presence Based Punch Clock</string>
-    <string name="list_view_title">Recorded WLAN presence</string>
+    <string name="app_name">Wifi Network Based Punch Clock</string>
+    <string name="list_view_title">Recorded Wifi Network Presence</string>
 
 </resources>

@@ -9,6 +9,7 @@ import android.net.wifi.WifiManager.WifiLock;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 
+// TODO: give the locks, instead of managers
 public class ScanRunnable implements Runnable {
 
 	private static final Logger log = Logger.getLogger(ScanRunnable.class);
@@ -34,7 +35,7 @@ public class ScanRunnable implements Runnable {
 			startOfRun = System.currentTimeMillis();
 			acquireLocks();
 			registerResultReceiver();
-			wifiManager.startScan();
+			resultReceiver.startScan();
 			log.debug("Wifi scan started");
 			// TODO: use a "locking" Future
 			while (wakeLock != null) {

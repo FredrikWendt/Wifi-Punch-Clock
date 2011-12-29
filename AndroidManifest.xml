@@ -20,13 +20,21 @@
         android:label="@string/app_name" >
         <activity
             android:label="@string/app_name"
-            android:name="se.wendt.android.wifipclock.ListSsidActivity" >
+            android:name="se.wendt.android.wifipclock.NetworkListActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:label="Network Summary"
+            android:name="se.wendt.android.wifipclock.NetworkSummaryActivity" >
+        </activity>
+        <activity
+            android:label="Network Details"
+            android:name="se.wendt.android.wifipclock.NetworkDetailsActivity" >
+        </activity>
+            
         <!-- fixme: add android:icon -->
         <!-- fixme: android:process=":Scheduler" -->
         <receiver

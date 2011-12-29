@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:padding="6sp">
 
     <TextView
         android:id="@+id/list_ssid_row_name"
         android:layout_width="0sp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
         android:textStyle="bold" />
     <TextView
         android:id="@+id/list_ssid_row_billable_hours"
-        android:layout_height="wrap_content"
+        android:layout_height="24sp"
         android:layout_width="24sp"
-        android:textSize="16sp"
         android:layout_gravity="right"
         android:gravity="right"
         />

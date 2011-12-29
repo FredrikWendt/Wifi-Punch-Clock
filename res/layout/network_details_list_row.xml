@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6sp" >
+
+    <TextView
+        android:id="@+id/network_details_list_row_start"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:gravity="left" />
+
+    <TextView
+        android:id="@+id/network_details_list_row_end"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/network_details_list_row_duration"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4"
+        android:gravity="right"
+         />
+
+</LinearLayout>

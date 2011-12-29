@@ -1,6 +1,7 @@
 package se.wendt.android.wifipclock.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import se.wendt.android.util.Logger;
@@ -16,10 +17,17 @@ public class WifiScanCompletedReceiver extends BroadcastReceiver {
 	private static final Logger log = Logger.getLogger(WifiScanCompletedReceiver.class);
 	private final WifiManager manager;
 	private final WifiScanService scanService;
+	private Date scanStartedAt;
 
 	public WifiScanCompletedReceiver(WifiScanService wifiScanService, WifiManager manager) {
 		this.scanService = wifiScanService;
 		this.manager = manager;
+	}
+	
+	public void startScan() {
+		log.debug("Initiating scan");
+		scanStartedAt = new Date(System.currentTimeMillis());
+		manager.startScan();
 	}
 
 	@Override
@@ -33,9 +41,6 @@ public class WifiScanCompletedReceiver extends BroadcastReceiver {
 
 	private void registerResults(Context context) {
 		log.debug("Registering results of scan");
-		// TODO: we really want to use the point in time when the scan was
-		// initiated, it'll more nicely align with the "schedulation"
-		long now = System.currentTimeMillis();
 
 		List<ScanResult> scanResults = manager.getScanResults();
 		SsidLog storage = new SsidLog(context);
@@ -43,7 +48,7 @@ public class WifiScanCompletedReceiver extends BroadcastReceiver {
 		for (ScanResult scanResult : scanResults) {
 			ssids.add(scanResult.SSID);
 		}
-		storage.recordSeenWlans(ssids, now);
+		storage.recordSeenWlans(ssids, scanStartedAt);
 		storage.close();
 	}
 }

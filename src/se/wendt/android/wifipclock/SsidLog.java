@@ -123,8 +123,8 @@ public class SsidLog extends SQLiteOpenHelper {
 		logger.debug("Date of previous run is being fetched");
 		Date result = new Date();
 		Cursor cursor = database.query(TABLE_RUNS, new String[] { "_id" }, null, null, null, null, "_id DESC", "1");
-		if (cursor.getCount() > 0) {
-			long pointInTime = cursor.getLong(1);
+		if (cursor.getCount() > 0 && cursor.moveToFirst()) {
+			long pointInTime = cursor.getLong(0);
 			result = new Date(pointInTime);
 		}
 		cursor.close();

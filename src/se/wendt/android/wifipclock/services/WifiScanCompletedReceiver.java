@@ -27,7 +27,17 @@ public class WifiScanCompletedReceiver extends BroadcastReceiver {
 	public void startScan() {
 		log.debug("Initiating scan");
 		scanStartedAt = new Date(System.currentTimeMillis());
+		makeSureWifiIsTurnedOn();
 		manager.startScan();
+	}
+
+	private void makeSureWifiIsTurnedOn() {
+		if (!manager.isWifiEnabled()) {
+			boolean result = manager.setWifiEnabled(true);
+			if (!result) {
+				log.warn("Failed to turn WiFi on, not sure what to do");
+			}
+		}
 	}
 
 	@Override

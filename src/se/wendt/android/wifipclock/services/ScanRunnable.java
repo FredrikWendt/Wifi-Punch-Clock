@@ -45,7 +45,7 @@ public class ScanRunnable implements Runnable {
 					// FIXME: give up after 90 seconds?
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-					log.debug("Waiti for scan to complete interrupted (%s ms)", getMillisElapsedSinceStartOfScan());
+					log.debug("Waiting for scan to complete interrupted (%s ms)", getMillisElapsedSinceStartOfScan());
 				}
 			}
 		} catch (Throwable t) {

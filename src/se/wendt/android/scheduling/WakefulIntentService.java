@@ -25,6 +25,9 @@ import android.content.Intent;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 
+/**
+ * Makes sure the device stays powered on until processing of the Intent is completed.
+ */
 abstract public class WakefulIntentService extends IntentService {
 	
 	public static final String LOCK_NAME_STATIC = WakefulIntentService.class.getName();
@@ -39,8 +42,11 @@ abstract public class WakefulIntentService extends IntentService {
 
 	@Override
 	final protected void onHandleIntent(Intent intent) {
-		doWakefulWork(intent);
-		getLock(this).release();
+		try {
+			doWakefulWork(intent);
+		} finally {
+			getLock(this).release();
+		}
 	}
 
 	public static void acquireStaticLock(Context context) {
@@ -54,7 +60,7 @@ abstract public class WakefulIntentService extends IntentService {
 			lockStatic.setReferenceCounted(true);
 		}
 
-		return (lockStatic);
+		return lockStatic;
 	}
 
 	protected static PowerManager getPowerManager(Context context) {
